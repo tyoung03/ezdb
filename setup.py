@@ -1,7 +1,7 @@
 import setuptools
 setuptools.setup(
   name='ezdb',
-  version='1.4',
+  version='1.5',
   description='Access a remote database like you would a native python structure',
   long_description='Access a remote database like you would a native python structure',
   author='Tyler Young',
