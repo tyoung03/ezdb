@@ -68,9 +68,11 @@ assert db == {u'none': None, u'alist': [u'three', u'three', [2, 3, u'3x'], [2, 3
   
 # Limitations:
 - You cannot assign to your EZDBClient object directly, due to limitations of the language. For example the following would overwrite the client with a simple dictionary:
+```python
   db = EZDBClient('client_db_list', 'http://127.0.0.1:5000')
   db = {} #This would be overwriting the magical db structure with simple dict!
-  
+```
+
 - As mentioned before, only JSON-like structures can be managed (think int, bool, float, list, dict). You may consider manual serialization of your classes to JSON before storage
 
 - The library runs evaluates strings as code and as such poses a security threat. Consider configuring flasks security features to only allow trusted users
