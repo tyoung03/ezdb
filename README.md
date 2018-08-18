@@ -1,14 +1,11 @@
 # ezdb
 (Python 2) Access a remote database like you would a native structure
 
-This library provides three components:
-- Server:
+This library provides two components:
+- EZDBServer Class:
   A Flask webserver which provides endpoints for reading and writing to a database. The database can store any data which is compliant with the JSON format. The database is automatically backed up and will attempt to rollback from faulty states
-- Client: 
-  This client interfaceses with the database as if you were simply using a python built-in dictionary or list. All calls made will automatically get/set changes to the database when appropriate. All dictionary and list methods are supported (inherited). Note, only JSON-compatible structures are supported
-- A python-like URL interface:
-  See the Features section for more details
-  
+- EZDBClient Class: 
+  This client interfaceses with the database as if you were simply using a python built-in dictionary or list. All calls made will automatically get/set changes to the database when appropriate. All dictionary and list methods are supported (inherited). Note, only JSON-compatible structures are supported  
 
 # Example Server:
 ```python
@@ -68,37 +65,6 @@ assert db == {u'none': None, u'alist': [u'three', u'three', [2, 3, u'3x'], [2, 3
 # Features:
 - By its design, any number of clients can access the same data, using it for storge or client-to-client communcation. The design is inherently threadsafe, though the database may change between client requests
 - You can configure how many attempts will be made for a given query. If the query still fails, an assert will be failed
-- You can access the database contents and even make simple modifications through a web browser, all with python-like assignments, for example:
-  To show contents of all database (special command): http://127.0.0.1:5000/root ->
-  {
-    "data": {
-        "clientdb": {
-            "alist": [
-                "three", 
-                [
-                    2,
-                    "3x"
-                ]
-            ], 
-        }
-    }, 
-    "success": true
-  }
-  
-  To add/modify to the contents of a subkey: http://127.0.0.1:5000/clientdb['alist']=[2, 3] ->
-  {
-    "data": [
-        2, 
-        3
-    ], 
-    "success": true
-  }
-  
-  View a key in the structure: http://127.0.0.1:5000/clientdb['alist'][1]
-  {
-    "data": 3, 
-    "success": true
-  }
   
 # Limitations:
 - You cannot assign to your EZDBClient object directly, due to limitations of the language. For example the following would overwrite the client with a simple dictionary:
