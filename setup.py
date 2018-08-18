@@ -1,13 +1,16 @@
-from distutils.core import setup
-setup(
+import setuptools
+setuptools.setup(
   name='ezdb',
-  packages=['ezdb'],
-  version='1.0',
+  version='1.4',
   description='Access a remote database like you would a native python structure',
+  long_description='Access a remote database like you would a native python structure',
   author='Tyler Young',
+  packages=setuptools.find_packages(),
   author_email='tyler.young@villanova.edu',
   url='https://github.com/tyoung03/ezdb', 
-  download_url= 'https://github.com/tyoung03/ezdb/archive/master.zip',
   keywords = ['database', 'ezdb', 'EZDB', 'easy', 'db', 'python'],
-  classifiers = [],
+  classifiers = [
+        "Programming Language :: Python :: 2",
+        "Operating System :: OS Independent",],
 )
+
