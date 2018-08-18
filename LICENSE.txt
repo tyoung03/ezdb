@@ -1,0 +1,6 @@
+/*
+ * ----------------------------------------------------------------------------
+ * This software is freely available for use and modification to anyone, and the inclusion of this license in derivitive distributions is not required.
+ * This software is provided to the internet community in good faith, and the creator cannot be held liable for any damages this software may cause. Use at your own risk.
+ * ----------------------------------------------------------------------------
+ */
