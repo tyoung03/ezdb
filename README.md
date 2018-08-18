@@ -2,11 +2,11 @@
 (Python 2) Access a remote database like you would a native structure
 
 This library provides three components:
-⋅⋅* Server:
+- Server:
   A Flask webserver which provides endpoints for reading and writing to a database. The database can store any data which is compliant with the JSON format. The database is automatically backed up and will attempt to rollback from faulty states
-⋅⋅* Client: 
+- Client: 
   This client interfaceses with the database as if you were simply using a python built-in dictionary or list. All calls made will automatically get/set changes to the database when appropriate. All dictionary and list methods are supported (inherited). Note, only JSON-compatible structures are supported
-⋅⋅* A python-like URL interface:
+- A python-like URL interface:
   See the Features section for more details
   
 
@@ -66,9 +66,9 @@ assert db == {u'none': None, u'alist': [u'three', u'three', [2, 3, u'3x'], [2, 3
 ```
 
 # Features:
-⋅⋅*By it's design, any number of clients can access the same data, using it for storge or client-to-client communcation. The design is inherently threadsafe, though the database may change between client requests
-⋅⋅*You can configure how many attempts will be made for a given query. If the query still fails, an assert will be failed
-⋅⋅*You can access the database contents and even make simple modifications through a web browser, all with python-like assignments, for example:
+- By its design, any number of clients can access the same data, using it for storge or client-to-client communcation. The design is inherently threadsafe, though the database may change between client requests
+- You can configure how many attempts will be made for a given query. If the query still fails, an assert will be failed
+- You can access the database contents and even make simple modifications through a web browser, all with python-like assignments, for example:
   To show contents of all database (special command): http://127.0.0.1:5000/root ->
   {
     "data": {
@@ -101,11 +101,11 @@ assert db == {u'none': None, u'alist': [u'three', u'three', [2, 3, u'3x'], [2, 3
   }
   
 # Limitations:
-⋅⋅* You cannot assign to your EZDBClient instance directly, for example the following would overwrite the client with a simple dictionary:
+- You cannot assign to your EZDBClient object directly, due to limitations of the language. For example the following would overwrite the client with a simple dictionary:
   db = EZDBClient('client_db_list', 'http://127.0.0.1:5000')
-  db = {} #This would be overwriting the magical db structure with simple list!
+  db = {} #This would be overwriting the magical db structure with simple dict!
   
-⋅⋅* As mentioned before, only JSON-like structures can be managed (think int, bool, float, list, dict). You may consider manual serialization of your classes to JSON before storage
+- As mentioned before, only JSON-like structures can be managed (think int, bool, float, list, dict). You may consider manual serialization of your classes to JSON before storage
 
-⋅⋅* The library runs evaluates strings as code and as such poses a security threat. Consider configuring flasks security features to only allow trusted users
+- The library runs evaluates strings as code and as such poses a security threat. Consider configuring flasks security features to only allow trusted users
 
