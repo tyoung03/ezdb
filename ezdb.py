@@ -27,7 +27,7 @@ class EZDBClient():
             # does not exist
             if str(subkeys) not in root_copy or not isinstance(root_copy[self.subkeys[0]], root_struct):
                 self.__keep_trying(
-                    self.url + EZDBClient.__url_encode(self.__make_url_path() + ' = ' + str(root_struct())))
+                    EZDBClient.__url_encode(self.__make_url_path() + ' = ' + str(root_struct())))
         else:
             self.subkeys = subkeys  # list case, i.e. a non-root node
 
